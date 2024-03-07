@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pas_green">#B0C5A4</color>
+    <color name="pas_orange">#D37676</color>
+    <color name="pas_peach">#EBC49F</color>
+    <color name="pas_yellow">#F1EF99</color>
+
+    <color name="win_blue">#265073</color>
+    <color name="win_teal">#265073</color>
+    <color name="win_lt_teal">#F1EF99</color>
+    <color name="win_cream">#9AD0C2</color>
+
+    <color name="win_beige">#E0CCBE</color>
+    <color name="win_lt_blue">#E0CCBE</color>
+    <color name="win_green">#304D30</color>
+
+    <array name="colors">
+        <item name="pas_green">@color/pas_green</item>
+        <item name="pas_orange">@color/pas_orange</item>
+        <item name="pas_peach">@color/pas_peach</item>
+        <item name="pas_yellow">@color/pas_yellow</item>
+
+        <item name="win_blue">@color/win_blue</item>
+        <item name="win_teal">@color/win_teal</item>
+        <item name="win_lt_teal">@color/win_lt_teal</item>
+        <item name="win_cream">@color/win_cream</item>
+        <item name="win_beige">@color/win_beige</item>
+        <item name="win_lt_blue">@color/win_lt_blue</item>
+        <item name="win_green">@color/win_green</item>
+    </array>
+    <string-array name="colorNames">
+        <item>pas_green</item>
+        <item>pas_orange</item>
+        <item>pas_peach</item>
+        <item>pas_yellow</item>
+    </string-array>
+</resources>
