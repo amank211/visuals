@@ -13,16 +13,9 @@ android {
 
     defaultConfig {
         minSdk = 29
-        version = "1.0"
+        version = "1.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-    }
-    productFlavors {
-        register("pie") {
-            aarMetadata {
-                minCompileSdk = 30
-            }
-        }
     }
 
     buildTypes {
@@ -53,20 +46,17 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("visuals") {
-            groupId = "com.github.amank211"
-            artifactId = "visuals"
-            version = "1.0"
-            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
-        }
-    }
-
-    repositories {
-        maven {
-            name = "visuals"
-            url = uri(layout.buildDirectory.dir("visuals"))
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from (components["release"])
+                groupId = "com.github.amank211"
+                artifactId = "visuals"
+                version = "1.4"
+            }
         }
     }
 }
+
+
