@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-    <com.pie.visuals.graph.BarGraph
+    <com.pie.visuals.graph.LineGraph
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:textSize="11sp"
+        app:textSize="20sp"
         app:barThickness="27sp"
         android:id="@+id/line"/>
 </RelativeLayout>

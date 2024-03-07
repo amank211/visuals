@@ -1,43 +1,43 @@
 package com.pie.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.pie.visuals.graph.BarGraph
-import com.pie.visuals.graph.BarGraph.Bar
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.internal.ContextUtils.getActivity
+import com.pie.visuals.graph.LineGraph
+import com.pie.visuals.graph.LineGraph.Point
+import java.io.IOException
+import java.io.InputStream
+import kotlin.random.Random
+
 
 class MainActivity : AppCompatActivity() {
-    lateinit var pie : BarGraph
-    val data = listOf(
-        Bar("2000", 1f),
-        Bar("2001", 2f),
-        Bar("2002", 5f),
-        Bar("2003", 3f),
-        Bar("2004", 2f),
-        Bar("2005", 4f),
-        Bar("2006", 2f),
-        Bar("2007", 5f),
-        Bar("2008", 7f),
-        Bar("2009", 9f),
-        Bar("2010", 8f),
-        Bar("2011", 5f),
-        Bar("2012", 5f),
-        Bar("2013", 5f),
-        Bar("2014", 5f),
-        Bar("2015", 5f),
-        Bar("2016", 5f),
-        Bar("2017", 5f),
-        Bar("2018", 5f),
-        Bar("2019", 5f),
-        Bar("2020", 5f),
-        Bar("2021", 5f),
-        Bar("2022", 5f),
-        Bar("2023", 5f),
-        Bar("2024", 5f),
-    )
+    lateinit var pie : LineGraph
+    val pointList = mutableListOf<Point>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        repeat(50) {
+            val randomX = Random.nextFloat() * 10 // Random float between 0 and 10
+            val randomY = Random.nextFloat() * 5 // Random float between 0 and 10
+            pointList.add(Point(randomX, randomY))
+        }
         pie = findViewById(R.id.line)
-        pie.setData(data)
+        pie.setData(pointList)
+    }
+
+    fun loadJSONFromAsset(): String {
+        var json = ""
+        json = try {
+            val `is`: InputStream = assets.open("cords.json")
+            val size = `is`.available()
+            val buffer = ByteArray(size)
+            `is`.read(buffer)
+            `is`.close()
+            String(buffer, charset("UTF-8"))
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+            return json
+        }
+        return json
     }
 }
