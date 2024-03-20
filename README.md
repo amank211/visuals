@@ -1,4 +1,5 @@
 # Visuals
+An opensource library for basic graph views for native android.
 ### Gradle Setup
 
 ```gradle
