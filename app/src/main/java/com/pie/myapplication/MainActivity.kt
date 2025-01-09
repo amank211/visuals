@@ -3,26 +3,29 @@ package com.pie.myapplication
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.internal.ContextUtils.getActivity
+import com.pie.visuals.graph.bar.BarGraph
 import com.pie.visuals.graph.LineGraph
 import com.pie.visuals.graph.LineGraph.Point
+import com.pie.visuals.graph.bar.BarData
+import com.pie.visuals.graph.bar.BarData.BarEntry
 import java.io.IOException
 import java.io.InputStream
 import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var pie : LineGraph
-    val pointList = mutableListOf<Point>()
+    private lateinit var pie : BarGraph
+    private val pointList = mutableListOf<BarEntry>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        repeat(50) {
-            val randomX = Random.nextFloat() * 10 // Random float between 0 and 10
-            val randomY = Random.nextFloat() * 5 // Random float between 0 and 10
-            pointList.add(Point(randomX, randomY))
+        for(i in 1..10) {
+            val randomH = Random.nextFloat() * 10 // Random float between 0 and 10
+            pointList.add(BarEntry(i.toString(), randomH))
         }
         pie = findViewById(R.id.line)
-        pie.setData(pointList)
+        pie.setData(BarData(pointList))
     }
 
     fun loadJSONFromAsset(): String {

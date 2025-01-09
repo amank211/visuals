@@ -11,7 +11,8 @@ import kotlin.math.ceil
 import kotlin.math.max
 
 class LineGraph(context: Context, attrs : AttributeSet) : View(context, attrs) {
-    var textColor = Color.BLACK
+
+    private var textColor = Color.BLACK
 
     private val origin = Point(0f, 0f)
     private var maxHeight = 0f
